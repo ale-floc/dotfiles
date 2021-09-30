@@ -1,0 +1,5 @@
+- name: Install Spacevim
+  shell: curl -sLf https://spacevim.org/install.sh | bash 
+
+- name: Remove relative number
+  shell: sed  -i "/\[options\]/a relativenumber = false" ~/.SpaceVim.d/init.toml

@@ -1,0 +1,31 @@
+- name: Install packages
+  become: yes
+  apt: 
+    name: "{{ apt_packages }}"
+    update_cache: yes
+
+- name: Get asdf
+  git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: $HOME/.asdf
+
+- name: Add asdf to bashrc
+  lineinfile:
+    path: $HOME/.bashrc
+    line: "{{ item }}"
+    state: present
+  loop:
+    - ". $HOME/.asdf/asdf.sh"
+    - ". $HOME/.asdf/completions/asdf.bash"
+
+- name: Get plugins
+  shell: "asdf list {{ item }} || asdf plugin add {{ item }}"
+  with_items: "{{ asdf_plugins }}"
+
+- name: Install plugins
+  shell: "asdf install {{ item }} latest"
+  with_items: "{{ asdf_plugins }}"
+
+- name: Set local versions
+  shell: "asdf global {{ item }} latest"
+  with_items: "{{ asdf_plugins }}"

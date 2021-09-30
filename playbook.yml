@@ -1,0 +1,5 @@
+- name: Dotfiles installation
+  hosts: local
+  roles:
+    - library
+    - terminal
