@@ -6,6 +6,7 @@ function get_dotfiles () {
     cd ~/.dotfiles && ansible-playbook playbook.yml --ask-become-pass
 }
 
+sudo apt update
 sudo apt -y install curl git ansible
 #ansible-playbook playbook.yml --ask-become-pass
 get_dotfiles
