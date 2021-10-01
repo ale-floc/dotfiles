@@ -26,6 +26,6 @@
   shell: "asdf install {{ item }} latest"
   with_items: "{{ asdf_plugins }}"
 
-- name: Set local versions
+- name: Set global versions
   shell: "asdf global {{ item }} latest"
   with_items: "{{ asdf_plugins }}"

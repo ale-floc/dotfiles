@@ -17,3 +17,8 @@ apt_packages:
   - libreadline-dev 
   - libsqlite3-dev
   - libffi-dev
+
+dotfiles:
+  - name: spacevim
+    src: init.toml
+    dest: "{{ lookup('env','HOME') }}/.SpaceVim.d/init.toml"

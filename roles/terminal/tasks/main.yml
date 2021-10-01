@@ -1,5 +1,13 @@
-- name: Install Spacevim
-  shell: curl -sLf https://spacevim.org/install.sh | bash 
+- name: Install oh-my-bash
+  shell: bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
-- name: Remove relative number
-  shell: sed  -i "/\[options\]/a relativenumber = false" ~/.SpaceVim.d/init.toml
+- name: Install Spacevim
+  shell: curl -sLf https://spacevim.org/install.sh | bash
+
+- name: Create dotfiles symbolic link
+  file:
+    src: "{{ playbook_dir }}/files_config/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: yes
+  with_items: "{{ dotfiles }}"
