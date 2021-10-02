@@ -17,6 +17,10 @@ apt_packages:
   - libreadline-dev 
   - libsqlite3-dev
   - libffi-dev
+  - apt-transport-https
+  - ca-certificates
+  - gnupg
+  - lsb-release
 
 dotfiles:
   - name: spacevim

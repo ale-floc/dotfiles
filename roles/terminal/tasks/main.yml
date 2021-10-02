@@ -4,6 +4,11 @@
 - name: Install Spacevim
   shell: curl -sLf https://spacevim.org/install.sh | bash
 
+- name: Ensure SpaceVim.d directory exists
+  file: 
+    state: directory
+    path: '$HOME/.SpaceVim.d'
+
 - name: Create dotfiles symbolic link
   file:
     src: "{{ playbook_dir }}/files_config/{{ item.src }}"

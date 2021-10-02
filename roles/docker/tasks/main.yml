@@ -1,0 +1,15 @@
+- name: Install docker
+  shell: "curl -s https://get.docker.com | bash"
+
+- name: Create group "docker"
+  become: yes
+  group:
+    name: docker
+    state: present
+
+- name: Add user 'alf' to group 'docker'
+  become: yes
+  user:
+    name: alf
+    groups: docker
+    append: yes

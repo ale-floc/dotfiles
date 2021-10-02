@@ -10,3 +10,4 @@ sudo apt update
 sudo apt -y install curl git ansible
 #ansible-playbook playbook.yml --ask-become-pass
 get_dotfiles
+source $HOME/.bashrc
