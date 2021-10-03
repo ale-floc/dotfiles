@@ -19,13 +19,19 @@
     - ". $HOME/.asdf/completions/asdf.bash"
 
 - name: Get plugins
-  shell: "{{ asdf }} list {{ item }} || {{ asdf }} plugin add {{ item }}"
+  shell: "asdf list {{ item }} || asdf plugin add {{ item }}"
   with_items: "{{ asdf_plugins }}"
+  environment:
+    PATH: "{{ asdf_path }}"
 
 - name: Install plugins
-  shell: "{{ asdf }} install {{ item }} latest"
+  shell: "asdf install {{ item }} latest"
   with_items: "{{ asdf_plugins }}"
+  environment:
+    PATH: "{{ asdf_path }}"
 
 - name: Set global versions
-  shell: "{{ asdf }} global {{ item }} latest"
+  shell: "asdf global {{ item }} latest"
   with_items: "{{ asdf_plugins }}"
+  environment:
+    PATH: "{{ asdf_path }}"
