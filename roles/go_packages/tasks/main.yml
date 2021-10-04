@@ -1,0 +1,5 @@
+- name: Install packages
+  shell: "go install {{ item }}"
+  with_items: "{{ go_packages }}"
+  environment:
+    PATH: "{{ bin_path }}"

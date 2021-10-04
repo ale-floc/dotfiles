@@ -1,11 +1,13 @@
+bin_path: "{{ lookup('env','HOME') }}/.asdf/shims:{{ ansible_env.PATH }}"
+
 asdf_plugins:
+  # - ansible-base
   - nodejs
   - golang
   - terraform
   - poetry
   - python
   - yarn
-    #  - ansible-base
 
 apt_packages:
   - unzip
@@ -21,6 +23,12 @@ apt_packages:
   - ca-certificates
   - gnupg
   - lsb-release
+
+pip_packages:
+  - pytest-testinfra
+
+go_packages:
+  - github.com/nektos/act@latest
 
 dotfiles:
   - name: spacevim

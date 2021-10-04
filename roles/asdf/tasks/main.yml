@@ -1,9 +1,3 @@
-- name: Install packages
-  become: yes
-  apt: 
-    name: "{{ apt_packages }}"
-    update_cache: yes
-
 - name: Get asdf
   git:
     repo: "https://github.com/asdf-vm/asdf.git"

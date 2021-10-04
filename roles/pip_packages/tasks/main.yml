@@ -1,0 +1,5 @@
+- name: Install packages
+  shell: "pip install {{ item }}"
+  with_items: "{{ pip_packages }}"
+  environment:
+    PATH: "{{ bin_path }}"
