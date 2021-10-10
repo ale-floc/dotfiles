@@ -1,5 +1,11 @@
+- name: Check if docker is already installed
+  stat:
+    path: "/usr/bin/docker"
+  register: dockerBin
+    
 - name: Install docker
   shell: "curl -s https://get.docker.com | bash"
+  when: dockerBin.stat.exists == False
 
 - name: Create group "docker"
   become: yes
