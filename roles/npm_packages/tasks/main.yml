@@ -1,0 +1,5 @@
+- name: Install packages
+  shell: "npm list -g {{ item }} || npm install -g {{ item }}"
+  with_items: "{{ npm_packages }}"
+  environment:
+    PATH: "{{ bin_path }}"

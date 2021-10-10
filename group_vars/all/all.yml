@@ -15,14 +15,20 @@ apt_packages:
   - zlib1g-dev
   - make
   - libssl-dev
-  - libbz2-dev 
-  - libreadline-dev 
+  - libbz2-dev
+  - libreadline-dev
   - libsqlite3-dev
   - libffi-dev
   - apt-transport-https
   - ca-certificates
   - gnupg
   - lsb-release
+  - exa
+  - ripgrep
+  - bat
+
+npm_packages:
+  - how-2
 
 pip_packages:
   - pytest-testinfra
@@ -30,7 +36,13 @@ pip_packages:
 go_packages:
   - github.com/nektos/act@latest
 
-dotfiles:
+files_config:
   - name: spacevim
     src: init.toml
     dest: "{{ lookup('env','HOME') }}/.SpaceVim.d/init.toml"
+
+bashrc_config:
+  - "alias ls=exa" # use exa instead ls
+  - "export EXA_COLORS='da=1;35'" # change color of date time for exa
+  - "alias cat=bat" # use bat instead cat
+  - "alias cat=batcat" # use bat instead cat (ubuntu & debian version)

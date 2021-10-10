@@ -1,11 +1,23 @@
+- name: Check if oh-my-bash is already installed
+  stat:
+    path: "$HOME/.oh-my-bash"
+  register: bashFolder
+
 - name: Install oh-my-bash
   shell: bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+  when: bashFolder.stat.exists == False
+
+- name: Check if SpaceVim is already installed
+  stat:
+    path: "$HOME/.SpaceVim"
+  register: svFolder
 
 - name: Install Spacevim
   shell: curl -sLf https://spacevim.org/install.sh | bash
+  when: svFolder.stat.exists == False
 
 - name: Ensure SpaceVim.d directory exists
-  file: 
+  file:
     state: directory
     path: '$HOME/.SpaceVim.d'
 
@@ -15,4 +27,11 @@
     dest: "{{ item.dest }}"
     state: link
     force: yes
-  with_items: "{{ dotfiles }}"
+  with_items: "{{ files_config }}"
+
+- name: Import config to bashrc
+  lineinfile:
+    path: '$HOME/.bashrc'
+    line: "{{ item }}"
+    state: present
+  with_items: "{{ bashrc_config }}"
