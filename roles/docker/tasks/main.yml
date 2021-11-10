@@ -12,10 +12,12 @@
   group:
     name: docker
     state: present
+  when: dockerBin.stat.exists == False
 
-- name: Add user 'alf' to group 'docker'
+- name: Add user to group 'docker'
   become: yes
   user:
-    name: alf
+    name: "$USER"
     groups: docker
     append: yes
+  when: dockerBin.stat.exists == False
