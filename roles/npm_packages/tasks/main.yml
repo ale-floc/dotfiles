@@ -3,3 +3,8 @@
   with_items: "{{ npm_packages }}"
   environment:
     PATH: "{{ bin_path }}"
+
+- name: Use commitizen with cz-conventional-changelog
+  copy:
+    content: '{ "path": "cz-conventional-changelog" }'
+    dest: "${HOME}/.czrc"

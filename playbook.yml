@@ -1,10 +1,17 @@
 - name: Dotfiles installation
   hosts: local
   roles:
-    - apt_packages
-    - asdf
-    - go_packages
-    - pip_packages
-    - docker
-    - terminal
-    - npm_packages
+    - role: apt_packages
+      tags: apt
+    - role: asdf
+      tags: asdf
+    - role: go_packages
+      tags: go
+    - role: pip_packages
+      tags: pip
+    - role: docker
+      tags: docker
+    - role: npm_packages
+      tags: npm
+    - role: terminal
+      tags: terminal

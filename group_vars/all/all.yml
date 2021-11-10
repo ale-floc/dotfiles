@@ -8,6 +8,12 @@ asdf_plugins:
   - poetry
   - python
   - yarn
+  - tmux
+  - awscli
+  - helm
+  - kind
+  - vault
+  - kubectl
 
 apt_packages:
   - unzip
@@ -26,9 +32,12 @@ apt_packages:
   - exa
   - ripgrep
   - bat
+  - sshpass
 
 npm_packages:
   - how-2
+  - commitizen
+  - cz-conventional-changelog
 
 pip_packages:
   - pytest-testinfra
@@ -46,3 +55,4 @@ bashrc_config:
   - "export EXA_COLORS='da=1;35'" # change color of date time for exa
   - "alias cat=bat" # use bat instead cat
   - "alias cat=batcat" # use bat instead cat (ubuntu & debian version)
+  - "alias port=netstat -tulpn" # find port faster
